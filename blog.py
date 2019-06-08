@@ -41,11 +41,9 @@ def twitter():
 		
 	elif request.method == 'PUT':
 		tweetid=request.json.get('id',0)
-		likes=request.json.get('likes')
-		likes=int(likes) + 1
-		result=tweets.update({"id":tweetid},{"$set":{"Likes":likes}})
+		result=tweets.update({"id":tweetid},{"$inc":{"Likes":1}})
 		response={
-           'alert':'Like  + +'
+           	'alert':'Like  + +'
 		}
 
 		return jsonify(response)
